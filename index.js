@@ -4,8 +4,10 @@ const mongoose = require("mongoose");
 const Product = require("./models/product");
 const User = require("./models/user");
 const Login = require("./models/user");
+const ShopingCart = require("./models/shoppingCart");
 const productRouter = require("./routers/productRouter");
 const userRouter = require("./routers/userRouter");
+const shoppingCartRouter = require("./routers/shoppingCartRouter");
 const authRouter = require("./routers/authRouter");
 
 
@@ -18,9 +20,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/api/v1/product", productRouter);
-app.use("/api/v1/user", userRouter);
+app.use("/api/v1/products", productRouter);
+app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/cart/product",shoppingCartRouter);
 
 app.use((err, req, res, next) => {
     res.status(400).json({
