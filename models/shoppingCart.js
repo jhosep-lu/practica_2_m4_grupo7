@@ -36,3 +36,6 @@ const shoppingCartSchema = new mongoose.Schema({
     ],
 
 });
+
+const ShoppingCartModel = mongoose.model("ShoppingCarts",shoppingCartSchema);
+module.exports = ShoppingCartModel;

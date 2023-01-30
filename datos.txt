@@ -1,0 +1,39 @@
+{
+    "invoiceNumber": 1,
+    "status": "PENDING",
+    "totalAmount": 50,
+    "user": "mica@gmail.com",
+    "products": [
+        {
+            "productId": "63d59993d2d8045951946db1",
+            "quantity": 7,
+            "price": 10
+        },
+        {
+            "productId": "63d59b8224785ce96fd44704",
+            "quantity": 2,
+            "price": 7
+        }
+    ]
+
+}
+
+{
+    "invoiceNumber": 2,
+    "status": "PAID",
+    "totalAmount": 70,
+    "user": "favi@gmail.com",
+    "products": [
+        {
+            "productId": "63d59993d2d8045951946db1",
+            "quantity": 7,
+            "price": 10
+        },
+        {
+            "productId": "63d59b8224785ce96fd44704",
+            "quantity": 2,
+            "price": 7
+        }
+    ]
+
+}
