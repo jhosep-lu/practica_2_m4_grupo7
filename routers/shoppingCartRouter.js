@@ -1,6 +1,6 @@
 const express = require("express");
 const ShoppingCartRouter = express.Router();
-const {getAllShoppingCart,addShoppingCart,ejercicio1,deleteProductShoppingCart,ejercicio3} = require("../controllers/ShoppingCart");
+const {getAllShoppingCart,addShoppingCart,ejercicio1,deleteProductShoppingCart,ejercicio3} = require("../controllers/shoppingCart");
 const {protect} = require("../controllers/Auth");
 ShoppingCartRouter
     .route("/")
