@@ -1,4 +1,4 @@
-const ShoppingCart = require("../models/ShoppingCart");
+const ShoppingCart = require("../models/shoppingCart");
 const catchAsync = require("../utils/catchAsync");
 
 const getAllShoppingCart = async (req, res) => {
