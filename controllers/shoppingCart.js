@@ -88,14 +88,14 @@ const ejercicio3 = catchAsync(async (req, res) => {
         todoShoppingCart.forEach((antShoppingCart) => {        
             if(antShoppingCart.status == "PENDING" && antShoppingCart.products.length == 1){
                 antShoppingCart.status = "PAID";
-                antShoppingCart.save();
+                //antShoppingCart.save();
                 sw = 1;
                 
             }
         });
     }
      
-    await todoShoppingCart.save(); 
+    //await todoShoppingCart.save(); 
     if(sw == 0){
         throw new Error("el carrito no existe");
     }
