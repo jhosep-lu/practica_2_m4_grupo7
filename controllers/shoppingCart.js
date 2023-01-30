@@ -75,6 +75,46 @@ const ejercicio1 = async (req, res) => {
 // DELETE /api/v1/cart/product/:id -- Si existe un shopping cart que este en estado PENDING 
 // y que tenga ese producto removemos el producto de ese carrito, sino damos error
 
+const deleteProductShoppingCart = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    console.log("productId: ", productId);
+
+
+    const carts = await ShoppingCart.find({ status: "PENDING" });
+    console.log("carts: ", carts);
+
+
+    carts.forEach(async (cart) => {
+      const newListOfProducts = cart.products.filter((product) => {
+        return product.productId !== productId;
+      });
+      console.log("newListOfProducts: ", newListOfProducts);
+
+
+      const cartToUpdate = {
+        invoiceNumber: cart.invoiceNumber,
+        status: cart.status,
+        totalAmount: cart.totalAmount,
+        user: cart.user,
+        products: newListOfProducts,
+      };
+
+      await ShoppingCart.findByIdAndUpdate(cart._id, cartToUpdate, { new: true });
+    });
+
+    res.status(200).json({
+      status: "success",
+      message: "El producto ha sido eliminado del carrito",
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+};
+
 // POST /api/v1/cart/pay -- Paga el carrito que este en estado pendiente con minimo un producto en el.
 // Si no existe un carrito con estas caracteristicas se dispara un error
 
@@ -111,6 +151,8 @@ module.exports = {
     addShoppingCart,
     addShoppingCartM,
     getAllShoppingCart,
+    
     ejercicio1,
+    deleteProductShoppingCart,
     ejercicio3
 }
